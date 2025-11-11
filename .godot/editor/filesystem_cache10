@@ -1,3 +1,9 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1762900465
-icon.svg::CompressedTexture2D::7040981345511266709::1762900460::1762900467::1::::<><><>0<>0<>04c7d677bb66981289f2e1c5a5eb98c8<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://::1762902768
+::res://Abilities/::1762902706
+::res://Assets/::1762902706
+icon.svg::CompressedTexture2D::7496762536746840193::1762901799::1762901858::1::::<><><>0<>0<>8f8404271cae34399a8240e6eaeea45c<>res://.godot/imported/icon.svg-8193eb3d66a1b5143b8bb4c28c1dc139.ctex::
+::res://Enemies/::1762902706
+::res://Main/::1762902706
+main.tscn::PackedScene::8467849381558421505::1762901908::0::1::::<><><>0<>0<><>::
+::res://Player/::1762902706
