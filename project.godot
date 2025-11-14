@@ -22,6 +22,8 @@ folder_colors={
 "res://Assets/": "purple",
 "res://Components/": "blue",
 "res://Enemies/": "blue",
+"res://Enemy/": "green",
+"res://Items/": "yellow",
 "res://Main/": "green",
 "res://Player/": "orange",
 "res://Spawner/": "yellow"
