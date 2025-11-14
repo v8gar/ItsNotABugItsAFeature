@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 const SPEED: int = 200
 var click_position = Vector2()
