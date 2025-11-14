@@ -18,6 +18,7 @@ func do_hit_effect() -> void:
 		add_child(hit_effect.instantiate())
 
 func _on_area_entered(area: Area2D) -> void:
+	
 	if area is not HurtBox:
 		return
 	
@@ -27,4 +28,8 @@ func _on_area_entered(area: Area2D) -> void:
 		health_component.take_damage((area as HurtBox).do_attack())
 
 func die():
-	self.queue_free()
+	# TODO: change ts, should not be hardcoded to enemy only
+	if get_parent() is Enemy:
+		get_parent().queue_free()
+	else:
+		self.queue_free()

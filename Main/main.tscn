@@ -59,4 +59,5 @@ shape = SubResource("CircleShape2D_ib3t1")
 debug_color = Color(0.036796562, 0.6508196, 1.92523e-07, 0.41960785)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_k3v36")
