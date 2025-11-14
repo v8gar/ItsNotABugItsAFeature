@@ -73,6 +73,7 @@ position = Vector2(940, 0)
 position = Vector2(563, -1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_k3v36")
 
 [connection signal="timeout" from="SpawnTImer" to="." method="_on_spawnTimer_timeout"]
