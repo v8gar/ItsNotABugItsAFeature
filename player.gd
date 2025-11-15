@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 		if instanced_item == null:
 			instanced_item = item.instantiate().with_data(self)
 			add_child(instanced_item)
-			await instanced_item.ready
 		instanced_item.activate()
 	
 	move_and_slide()
