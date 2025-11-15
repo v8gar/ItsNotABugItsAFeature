@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1763156750
+::res://::1763158315
 player.gd::GDScript::2406727032759810350::1763056030::0::1::::<>CharacterBody2D<><>0<>0<><>::
 ::res://Abilities/::1763087309
 ability.gd::GDScript::7533666224283401500::1763056030::0::1::::Ability<>Node<><>0<>0<><>::
@@ -11,18 +11,18 @@ icon.svg::CompressedTexture2D::7496762536746840193::1762902940::1762902997::1:::
 ::res://Components/::1763056030
 health_component.gd::GDScript::2381481595988046700::1763056030::0::1::::HealthComponent<>Resource<><>0<>0<><>::
 hurt_component.gd::GDScript::1704475062938175093::1763056030::0::1::::HurtComponent<>Resource<><>0<>0<><>::
-::res://Components/Hitbox&Hurtbox Stuff/::1763088285
-hit_box.gd::GDScript::383233486467586551::1763088285::0::1::::HitBox<>Area2D<><>0<>0<><>::
+::res://Components/Hitbox&Hurtbox Stuff/::1763158299
+hit_box.gd::GDScript::383233486467586551::1763158299::0::1::::HitBox<>Area2D<><>0<>0<><>::
 hit_box.tscn::PackedScene::7603357605692374936::1763079344::0::1::::<><><>0<>0<><>::uid://fpv2gi1cl7yp::::res://Components/Hitbox&Hurtbox Stuff/hit_box.gd
 hurt_box.gd::GDScript::4208098798788188128::1763056030::0::1::::HurtBox<>Area2D<><>0<>0<><>::
 hurt_box.tscn::PackedScene::93912746451906143::1763082079::0::1::::<><><>0<>0<><>::uid://b07o1i5u0141y::::res://Components/Hitbox&Hurtbox Stuff/hurt_box.gd
-::res://Enemy/::1763149713
-Dash_enemy.gd::GDScript::3717338055233129056::1763148327::0::1::::<>Enemy<><>0<>0<><>::
-enemy.gd::GDScript::3600097605025692337::1763148649::0::1::::Enemy<>CharacterBody2D<><>0<>0<><>::
-enemy.tscn::PackedScene::2649913356048113806::1763149713::0::1::::<><><>0<>0<><>::uid://blqy1785xxrj::::res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn<>uid://dglegomtu41bg::::res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn<>uid://yjwpqjr5cj1n::::res://Components/hurt_component.gd<>uid://86uwh70cdq33::::res://Components/health_component.gd
-Fly.tscn::PackedScene::5811775466873459722::1763090451::0::1::::<><><>0<>0<><>::uid://m16nutlje5jc::::res://Enemy/Fly_enemy.gd
-Fly_enemy.gd::GDScript::897846467688762492::1763147819::0::1::::<>Enemy<><>0<>0<><>::
-::res://Main/::1763147078
-main.tscn::PackedScene::8467849381558421505::1763147078::0::1::::<><><>0<>0<><>::uid://bd0vxk2l32uw1::::res://Enemy/enemy.tscn<>uid://1sajrvnamtf7::::res://Player/player.tscn<>uid://blqy1785xxrj::::res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn<>uid://m16nutlje5jc::::res://Enemy/Fly_enemy.gd<>uid://yjwpqjr5cj1n::::res://Components/hurt_component.gd<>uid://dglegomtu41bg::::res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn<>uid://86uwh70cdq33::::res://Components/health_component.gd
-::res://Player/::1763087832
-player.tscn::PackedScene::1862085732236061526::1763087832::0::1::::<><><>0<>0<><>::uid://baj3pbwboyb4q::::res://player.gd<>uid://dglegomtu41bg::::res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn<>uid://b7v0gxpjpdcnu::::res://Abilities/basic_attack.tscn<>uid://86uwh70cdq33::::res://Components/health_component.gd<>uid://de2qt30lkg4in::::res://Assets/icon.svg
+::res://Enemy/::1763158299
+Dash_enemy.gd::GDScript::3717338055233129056::1763158299::0::1::::<>Enemy<><>0<>0<><>::
+enemy.gd::GDScript::3600097605025692337::1763158299::0::1::::Enemy<>CharacterBody2D<><>0<>0<><>::
+enemy.tscn::PackedScene::2649913356048113806::1763158299::0::1::::<><><>0<>0<><>::uid://blqy1785xxrj::::res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn<>uid://dglegomtu41bg::::res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn<>uid://yjwpqjr5cj1n::::res://Components/hurt_component.gd<>uid://86uwh70cdq33::::res://Components/health_component.gd
+Fly.tscn::PackedScene::5811775466873459722::1763158299::0::1::::<><><>0<>0<><>::uid://m16nutlje5jc::::res://Enemy/Fly_enemy.gd
+Fly_enemy.gd::GDScript::897846467688762492::1763158299::0::1::::<>Enemy<><>0<>0<><>::
+::res://Main/::1763158299
+main.tscn::PackedScene::8467849381558421505::1763158299::0::1::::<><><>0<>0<><>::uid://bd0vxk2l32uw1::::res://Enemy/enemy.tscn<>uid://1sajrvnamtf7::::res://Player/player.tscn<>uid://blqy1785xxrj::::res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn<>uid://m16nutlje5jc::::res://Enemy/Fly_enemy.gd<>uid://yjwpqjr5cj1n::::res://Components/hurt_component.gd<>uid://dglegomtu41bg::::res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn<>uid://86uwh70cdq33::::res://Components/health_component.gd
+::res://Player/::1763158299
+player.tscn::PackedScene::1862085732236061526::1763158299::0::1::::<><><>0<>0<><>::uid://baj3pbwboyb4q::::res://player.gd<>uid://dglegomtu41bg::::res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn<>uid://b7v0gxpjpdcnu::::res://Abilities/basic_attack.tscn<>uid://86uwh70cdq33::::res://Components/health_component.gd<>uid://de2qt30lkg4in::::res://Assets/icon.svg

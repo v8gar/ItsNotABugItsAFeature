@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://dsv5ih6knxyxl"]
 
-[ext_resource type="PackedScene" uid="uid://bd0vxk2l32uw1" path="res://Enemy/enemy.tscn" id="1_ib3t1"]
+[ext_resource type="Script" uid="uid://bef4moorlwcfx" path="res://Main/main.gd" id="1_f6fdm"]
 [ext_resource type="PackedScene" uid="uid://1sajrvnamtf7" path="res://Player/player.tscn" id="1_yh5la"]
 [ext_resource type="PackedScene" uid="uid://blqy1785xxrj" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn" id="2_2w1kt"]
-[ext_resource type="Script" uid="uid://m16nutlje5jc" path="res://Enemy/Fly_enemy.gd" id="2_ib3t1"]
+[ext_resource type="PackedScene" uid="uid://dtl61m7bvusg" path="res://Enemy/dash_enemy.tscn" id="2_ib3t1"]
 [ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="3_qvhan"]
 [ext_resource type="PackedScene" uid="uid://dglegomtu41bg" path="res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn" id="4_k3v36"]
 [ext_resource type="Script" uid="uid://86uwh70cdq33" path="res://Components/health_component.gd" id="5_k3v36"]
@@ -31,12 +31,12 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 648, 1152, 648, 1152, 0)])
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_f6fdm")
 
-[node name="Fly" parent="." instance=ExtResource("1_ib3t1")]
-position = Vector2(906, 179)
-script = ExtResource("2_ib3t1")
+[node name="dash_enemy" parent="." instance=ExtResource("2_ib3t1")]
 
 [node name="Player" parent="." groups=["players"] instance=ExtResource("1_yh5la")]
+position = Vector2(522, 379)
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("collision_shape2D") instance=ExtResource("2_2w1kt")]
 collision_layer = 2

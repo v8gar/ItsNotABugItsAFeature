@@ -44,12 +44,13 @@ ability = ExtResource("2_k53q1")
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4ntmi")
 
-[node name="HitBox" parent="." node_paths=PackedStringArray("collision_shape2D") instance=ExtResource("2_btcbx")]
+[node name="HitBox" parent="." node_paths=PackedStringArray("collision_shape2D", "node_to_kill") instance=ExtResource("2_btcbx")]
 collision_layer = 0
 collision_mask = 2
 health_component = SubResource("Resource_k53q1")
-hit_effect = SubResource("PackedScene_fhl08")
 collision_shape2D = NodePath("CollisionShape2D")
+hit_effect = SubResource("PackedScene_fhl08")
+node_to_kill = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CapsuleShape2D_fhl08")

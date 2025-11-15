@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqvitc5rtxekg"]
+
+[ext_resource type="Script" uid="uid://m16nutlje5jc" path="res://Enemy/Fly_enemy.gd" id="1_x7ndy"]
+[ext_resource type="PackedScene" uid="uid://blqy1785xxrj" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn" id="2_r5arg"]
+[ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="3_0231u"]
+[ext_resource type="PackedScene" uid="uid://dglegomtu41bg" path="res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn" id="4_ghd4p"]
+[ext_resource type="Script" uid="uid://86uwh70cdq33" path="res://Components/health_component.gd" id="5_8rrkr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_55ese"]
+
+[sub_resource type="Resource" id="Resource_bc17o"]
+resource_local_to_scene = true
+script = ExtResource("3_0231u")
+power = 10
+metadata/_custom_type_script = "uid://yjwpqjr5cj1n"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ej31p"]
+
+[sub_resource type="Resource" id="Resource_ofg1o"]
+resource_local_to_scene = true
+script = ExtResource("5_8rrkr")
+health = 10
+max_health = 10
+metadata/_custom_type_script = "uid://86uwh70cdq33"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ito7u"]
+
+[node name="fly_enemy" type="CharacterBody2D"]
+script = ExtResource("1_x7ndy")
+metadata/_custom_type_script = "uid://brj6c1kggd6lh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_55ese")
+
+[node name="HurtBox" parent="." instance=ExtResource("2_r5arg")]
+collision_layer = 2
+collision_mask = 0
+hurt_component = SubResource("Resource_bc17o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_ej31p")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+avoidance_enabled = true
+radius = 100.0
+
+[node name="HitBox" parent="." node_paths=PackedStringArray("collision_shape2D", "node_to_kill") instance=ExtResource("4_ghd4p")]
+collision_layer = 0
+collision_mask = 4
+health_component = SubResource("Resource_ofg1o")
+collision_shape2D = NodePath("CollisionShape2D")
+node_to_kill = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CapsuleShape2D_ito7u")

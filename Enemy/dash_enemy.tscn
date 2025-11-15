@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://dtl61m7bvusg"]
+
+[ext_resource type="Script" uid="uid://bs7yaq7gomar5" path="res://Enemy/Dash_enemy.gd" id="1_tvo0k"]
+[ext_resource type="PackedScene" uid="uid://blqy1785xxrj" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn" id="2_jpr3n"]
+[ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="3_6djl0"]
+[ext_resource type="PackedScene" uid="uid://dglegomtu41bg" path="res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn" id="4_18mdo"]
+[ext_resource type="Script" uid="uid://86uwh70cdq33" path="res://Components/health_component.gd" id="5_brb1q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvo0k"]
+
+[sub_resource type="Resource" id="Resource_jpr3n"]
+script = ExtResource("3_6djl0")
+metadata/_custom_type_script = "uid://yjwpqjr5cj1n"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6djl0"]
+
+[sub_resource type="Resource" id="Resource_tvo0k"]
+script = ExtResource("5_brb1q")
+health = 10
+max_health = 10
+metadata/_custom_type_script = "uid://86uwh70cdq33"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3ece"]
+
+[node name="dash_enemy" type="CharacterBody2D"]
+script = ExtResource("1_tvo0k")
+metadata/_custom_type_script = "uid://brj6c1kggd6lh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tvo0k")
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("collision_shape2D") instance=ExtResource("2_jpr3n")]
+collision_layer = 2
+collision_mask = 0
+hurt_component = SubResource("Resource_jpr3n")
+collision_shape2D = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_6djl0")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+avoidance_enabled = true
+radius = 100.0
+
+[node name="HitBox" parent="." node_paths=PackedStringArray("collision_shape2D", "node_to_kill") instance=ExtResource("4_18mdo")]
+collision_layer = 0
+collision_mask = 4
+health_component = SubResource("Resource_tvo0k")
+collision_shape2D = NodePath("CollisionShape2D")
+node_to_kill = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CapsuleShape2D_a3ece")
+
+[node name="DashTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.516
+one_shot = true

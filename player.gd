@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 const SPEED: int = 200
 var click_position = Vector2()
@@ -26,3 +26,6 @@ func _process(delta: float) -> void:
 		add_child(ability.instantiate())
 	
 	move_and_slide()
+
+func die():
+	queue_free()
