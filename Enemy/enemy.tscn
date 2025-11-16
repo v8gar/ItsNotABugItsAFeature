@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://bd0vxk2l32uw1"]
+[gd_scene load_steps=10 format=3 uid="uid://bd0vxk2l32uw1"]
 
-[ext_resource type="Script" uid="uid://brj6c1kggd6lh" path="res://Enemy/enemy.gd" id="1_ncf7h"]
 [ext_resource type="PackedScene" uid="uid://blqy1785xxrj" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn" id="2_px1sc"]
 [ext_resource type="PackedScene" uid="uid://dglegomtu41bg" path="res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn" id="3_am0pq"]
 [ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="3_ncf7h"]
@@ -8,7 +7,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqilm"]
 
-[sub_resource type="Resource" id="Resource_m6jha"]
+[sub_resource type="Resource" id="Resource_eqilm"]
 resource_local_to_scene = true
 script = ExtResource("3_ncf7h")
 power = 10
@@ -28,7 +27,6 @@ metadata/_custom_type_script = "uid://86uwh70cdq33"
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_ncf7h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_eqilm")
@@ -36,7 +34,7 @@ shape = SubResource("CapsuleShape2D_eqilm")
 [node name="HurtBox" parent="." instance=ExtResource("2_px1sc")]
 collision_layer = 2
 collision_mask = 0
-hurt_component = SubResource("Resource_m6jha")
+hurt_component = SubResource("Resource_eqilm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_ncf7h")
