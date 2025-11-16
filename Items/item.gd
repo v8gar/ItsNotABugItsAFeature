@@ -1,19 +1,19 @@
 class_name Item extends Node
 
+signal start_cooldown
+
 @export var icon : Sprite2D
 @export var first_ability : PackedScene
 @export var second_ability : PackedScene
 @onready var timer: Timer = $Timer
-
 
 ## Cooldown for an item is the maximum cooldown of the abilities it activates
 var cooldown : int
 var player : Player
 var is_running : bool = false
 
-func with_data(new_player : Player):
-	player = new_player
-	return self
+func _ready() -> void:
+	player = get_tree().get_nodes_in_group("Player")[0] as Player
 
 func activate():
 	if !timer.is_stopped() || is_running:
@@ -31,6 +31,7 @@ func activate():
 	print(cooldown)
 	is_running = false
 	timer.start(cooldown)
+	start_cooldown.emit()
 
 func activate_ability(ability : PackedScene) -> Ability:
 	var activated_ability : Ability = ability.instantiate() as Ability
