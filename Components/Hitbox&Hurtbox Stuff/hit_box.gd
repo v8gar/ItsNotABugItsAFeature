@@ -3,6 +3,7 @@ class_name HitBox extends Area2D
 @export var health_component : HealthComponent
 @export var collision_shape2D : CollisionShape2D
 @export var hit_effect : PackedScene
+@export var node_to_kill : Node
 
 func _ready() -> void:
 	health_component.die.connect(die)
@@ -18,6 +19,7 @@ func do_hit_effect() -> void:
 		add_child(hit_effect.instantiate())
 
 func _on_area_entered(area: Area2D) -> void:
+	
 	if area is not HurtBox:
 		return
 	
@@ -27,4 +29,5 @@ func _on_area_entered(area: Area2D) -> void:
 		health_component.take_damage((area as HurtBox).do_attack())
 
 func die():
-	self.queue_free()
+	if node_to_kill != null:
+		node_to_kill.queue_free()

@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsv5ih6knxyxl"]
+
+[ext_resource type="PackedScene" uid="uid://co2jdfkr573es" path="res://Enemy/fly_enemy.tscn" id="1_liyct"]
+[ext_resource type="PackedScene" uid="uid://1sajrvnamtf7" path="res://Player/player.tscn" id="1_yh5la"]
+[ext_resource type="PackedScene" uid="uid://blqy1785xxrj" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn" id="2_2w1kt"]
+[ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="3_qvhan"]
+[ext_resource type="PackedScene" uid="uid://dglegomtu41bg" path="res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn" id="4_k3v36"]
+[ext_resource type="Script" uid="uid://86uwh70cdq33" path="res://Components/health_component.gd" id="5_k3v36"]
+
+[sub_resource type="Resource" id="Resource_eunhr"]
+script = ExtResource("3_qvhan")
+power = 10
+metadata/_custom_type_script = "uid://yjwpqjr5cj1n"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvhan"]
+size = Vector2(61.5, 188)
+
+[sub_resource type="Resource" id="Resource_liyct"]
+script = ExtResource("5_k3v36")
+health = 10
+max_health = 10
+metadata/_custom_type_script = "uid://86uwh70cdq33"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ib3t1"]
+radius = 37.01351
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_k3v36"]
+vertices = PackedVector2Array(1142, 638, 10, 638, 10, 10, 1142, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 648, 1152, 648, 1152, 0)])
+
+[node name="Main" type="Node2D"]
+
+[node name="Fly_enemy" parent="." instance=ExtResource("1_liyct")]
+
+[node name="Player" parent="." groups=["players"] instance=ExtResource("1_yh5la")]
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("collision_shape2D") instance=ExtResource("2_2w1kt")]
+collision_layer = 2
+collision_mask = 0
+hurt_component = SubResource("Resource_eunhr")
+collision_shape2D = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(252, 198)
+shape = SubResource("RectangleShape2D_qvhan")
+debug_color = Color(0.99997133, 0, 0.11064974, 0.41960785)
+
+[node name="HitBox2" parent="." node_paths=PackedStringArray("collision_shape2D") instance=ExtResource("4_k3v36")]
+position = Vector2(461, 220)
+collision_layer = 0
+collision_mask = 4
+health_component = SubResource("Resource_liyct")
+collision_shape2D = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2"]
+shape = SubResource("CircleShape2D_ib3t1")
+debug_color = Color(0.036796562, 0.6508196, 1.92523e-07, 0.41960785)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_k3v36")
