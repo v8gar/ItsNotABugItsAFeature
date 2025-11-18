@@ -57,7 +57,7 @@ collision_shape2D = NodePath("CollisionShape2D")
 shape = SubResource("CircleShape2D_ib3t1")
 debug_color = Color(0.036796562, 0.6508196, 1.92523e-07, 0.41960785)
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="SpawnTImer" type="Timer" parent="."]
 autostart = true
 
 [node name="Spawner1" type="Marker2D" parent="." groups=["spawn"]]
@@ -75,6 +75,4 @@ position = Vector2(563, -1)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_k3v36")
 
-[node name="EnemyContainer" type="Node2D" parent="."]
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawnTimer_timeout"]
+[connection signal="timeout" from="SpawnTImer" to="." method="_on_spawnTimer_timeout"]
