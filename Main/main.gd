@@ -1,6 +1,6 @@
 extends Node2D
 
-var enemy = preload("res://Enemy/Fly_enemy.tscn")
+var enemy = preload("res://Enemy/Dash_enemy.tscn")
 @onready var SpawnTimer: Timer = $SpawnTimer
 @onready var EnemyContainer: Node2D = $EnemyContainer
 
