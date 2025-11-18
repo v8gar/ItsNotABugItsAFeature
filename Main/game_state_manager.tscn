@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddtikrp1ouin8"]
+
+[ext_resource type="Script" uid="uid://bs2xytykx0hjj" path="res://Main/game_state_manager.gd" id="1_ft50w"]
+[ext_resource type="PackedScene" uid="uid://dsv5ih6knxyxl" path="res://Main/main.tscn" id="2_ft50w"]
+
+[node name="GameStateManager" type="Node"]
+script = ExtResource("1_ft50w")
+
+[node name="Main" parent="." instance=ExtResource("2_ft50w")]
