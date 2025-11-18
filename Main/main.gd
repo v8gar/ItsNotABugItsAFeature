@@ -4,7 +4,6 @@ var enemy = preload("res://Enemy/Fly_enemy.tscn")
 @onready var SpawnTimer: Timer = $SpawnTimer
 @onready var EnemyContainer: Node2D = $EnemyContainer
 
-var first_round: bool = true
 var wave: int = 0
 
 var spawn_counter: int = 0
