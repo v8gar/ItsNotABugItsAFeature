@@ -56,14 +56,16 @@ func update_health():
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
-	
-	var stylebox = healthbar.get("theme_override_colors/fill")
-	print(stylebox)
-	
+		
 	var current_percentage = ((healthbar.value - healthbar.min_value) / (healthbar.max_value - healthbar.min_value)) * 100
+	var sb = healthbar.get("theme_override_styles/fill")
+	if sb == null:
+		sb = StyleBoxFlat.new()
+		healthbar.add_theme_stylebox_override("fill", sb)
+	
 	if current_percentage >= 70:
-		healthbar.set_modulate(Color('#8ab060'))
+		sb.bg_color = Color('#8ab060')
 	elif current_percentage >= 30:
-		healthbar.set_modulate(Color('#d3a068'))
+		sb.bg_color = Color('#d3a068')
 	else:
-		healthbar.set_modulate(Color('#b45252'))
+		sb.bg_color = Color('#b45252')
