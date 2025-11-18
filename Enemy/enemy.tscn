@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bd0vxk2l32uw1"]
+[gd_scene load_steps=13 format=3 uid="uid://bd0vxk2l32uw1"]
 
 [ext_resource type="Script" uid="uid://brj6c1kggd6lh" path="res://Enemy/enemy.gd" id="1_ncf7h"]
 [ext_resource type="PackedScene" uid="uid://blqy1785xxrj" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn" id="2_px1sc"]
@@ -25,7 +25,14 @@ metadata/_custom_type_script = "uid://86uwh70cdq33"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m6jha"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncf7h"]
+bg_color = Color(1, 1, 1, 0.45882353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6jha"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="Enemy" type="CharacterBody2D"]
+modulate = Color(0.42365032, 0.42365074, 0.42365053, 1)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_ncf7h")
@@ -67,4 +74,6 @@ offset_top = -22.0
 offset_right = 199.99998
 offset_bottom = 5.0
 scale = Vector2(0.1, 0.1)
+theme_override_styles/background = SubResource("StyleBoxFlat_ncf7h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m6jha")
 show_percentage = false
