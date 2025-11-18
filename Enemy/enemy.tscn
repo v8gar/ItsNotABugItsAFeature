@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd0vxk2l32uw1"]
+[gd_scene load_steps=11 format=3 uid="uid://bd0vxk2l32uw1"]
 
+[ext_resource type="Script" uid="uid://brj6c1kggd6lh" path="res://Enemy/enemy.gd" id="1_ncf7h"]
 [ext_resource type="PackedScene" uid="uid://blqy1785xxrj" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn" id="2_px1sc"]
 [ext_resource type="PackedScene" uid="uid://dglegomtu41bg" path="res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn" id="3_am0pq"]
 [ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="3_ncf7h"]
@@ -18,8 +19,8 @@ metadata/_custom_type_script = "uid://yjwpqjr5cj1n"
 [sub_resource type="Resource" id="Resource_ncf7h"]
 resource_local_to_scene = true
 script = ExtResource("4_eqilm")
-health = 10
-max_health = 10
+health = 100
+max_health = 100
 metadata/_custom_type_script = "uid://86uwh70cdq33"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m6jha"]
@@ -27,6 +28,7 @@ metadata/_custom_type_script = "uid://86uwh70cdq33"
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("1_ncf7h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_eqilm")
@@ -58,3 +60,11 @@ shape = SubResource("CapsuleShape2D_m6jha")
 unique_name_in_owner = true
 wait_time = 3.516
 one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -10.000002
+offset_top = -22.0
+offset_right = 199.99998
+offset_bottom = 5.0
+scale = Vector2(0.1, 0.1)
+show_percentage = false
