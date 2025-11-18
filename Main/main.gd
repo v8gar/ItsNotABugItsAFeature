@@ -4,6 +4,7 @@ var enemy = preload("res://Enemy/Fly_enemy.tscn")
 @onready var SpawnTimer: Timer = $SpawnTimer
 @onready var EnemyContainer: Node2D = $EnemyContainer
 
+var first_round: bool = true
 var wave: int = 0
 
 var spawn_counter: int = 0
@@ -20,6 +21,7 @@ func _process(delta: float) -> void:
 	finish_round()
 	
 	next_round()
+	print(SpawnTimer.wait_time)
 		
 func finish_round():
 	if spawn_counter == num_to_spawn:

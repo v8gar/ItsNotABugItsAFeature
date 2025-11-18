@@ -58,6 +58,7 @@ shape = SubResource("CircleShape2D_ib3t1")
 debug_color = Color(0.036796562, 0.6508196, 1.92523e-07, 0.41960785)
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [node name="Spawner1" type="Marker2D" parent="." groups=["spawn"]]
