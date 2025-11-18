@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal player_died
+
 const SPEED: int = 200
 var click_position = Vector2()
 var target_position = Vector2()
@@ -12,6 +14,9 @@ var target_position = Vector2()
 
 var instanced_item : Item = null
 
+func _ready() -> void:
+	player_died.connect(get_parent().player_died)
+
 func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed("left_click"):
@@ -22,7 +27,8 @@ func _process(delta: float) -> void:
 			velocity = lerp(velocity, Vector2.ZERO, 12 * delta)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, 12 * delta)
-	
+	if Input.is_action_just_pressed("ui_accept"):
+		hitbox.health_component.take_damage(100)
 	if Input.is_action_just_pressed("right_click"):
 		inventory.activate()
 	
@@ -43,4 +49,4 @@ func update_anim_parameters():
 	animation_tree.set("parameters/Walk/blend_position", velocity.normalized())
 
 func die():
-	queue_free()
+	player_died.emit()
