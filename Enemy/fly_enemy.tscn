@@ -54,3 +54,5 @@ node_to_kill = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CapsuleShape2D_ito7u")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]

@@ -13,7 +13,7 @@
 
 [sub_resource type="Resource" id="Resource_k53q1"]
 script = ExtResource("3_gwnis")
-health = 100
+health = 2
 max_health = 100
 metadata/_custom_type_script = "uid://86uwh70cdq33"
 

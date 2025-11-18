@@ -2,70 +2,42 @@ extends Enemy
 
 @onready var dash_timer: Timer = %DashTimer as Timer
 
+enum States {DASHING, TRACKING_PLAYER}
+
+var state : States = States.TRACKING_PLAYER
+
 @export var moveSpeed : float = 100
-@export var dashSpeed : float = 400.0
+@export var dashSpeed : float = 200
 
 var dashTargetPosition: Vector2
-var isDashing : bool
 var dashDirection : Vector2
-var isDashQueued = false
+var health : int
 
 func _physics_process(delta: float) -> void:
-	if dash_timer.is_stopped():
-		checkDash()
-		if isDashing:
-			dash(delta)
-		else:
+	match state:
+		States.DASHING:
+			pass
+		States.TRACKING_PLAYER:
+			checkDash()
 			move_enemy(delta, moveSpeed)
 	
-	update_health()
+	update_health(health)
+	move_and_slide()
 
-func dash(delta: float) -> void:
-	if isDashQueued:
-		return   
-	else:
-		dashTargetPosition = player_location()
+func dash() -> void:
+	dashTargetPosition = player_location()
 	
-	isDashQueued = true
-	await get_tree().create_timer(1).timeout
-	isDashQueued = false
+	await get_tree().create_timer(.5).timeout
 	
 	dash_timer.start()
 	
 	dashDirection = global_position.direction_to(dashTargetPosition)
-	velocity = dashDirection * dashSpeed
-	
-	global_position += (velocity * delta) * 10
+	velocity = dashDirection * dashSpeed * 2	
 
 func checkDash() -> void:
-	if global_position.distance_to(player_location()) < 150:
-		if not isDashing:
-			isDashing = true
-	else:
-		isDashing = false
+	if global_position.distance_to(player_location()) < 100:
+		state = States.DASHING
+		dash()
 
-func _on_DashTimer_timeout():
-	isDashing = false
-
-func update_health():
-	var healthbar = $HealthBar
-	var health = hit_box.health_component.health
-	healthbar.max_value = hit_box.health_component.max_health
-	healthbar.value = health
-	if health >= hit_box.health_component.max_health:
-		healthbar.visible = false
-	else:
-		healthbar.visible = true
-		
-	var current_percentage = ((healthbar.value - healthbar.min_value) / (healthbar.max_value - healthbar.min_value)) * 100
-	var sb = healthbar.get("theme_override_styles/fill")
-	if sb == null:
-		sb = StyleBoxFlat.new()
-		healthbar.add_theme_stylebox_override("fill", sb)
-	
-	if current_percentage >= 70:
-		sb.bg_color = Color('#8ab060')
-	elif current_percentage >= 30:
-		sb.bg_color = Color('#d3a068')
-	else:
-		sb.bg_color = Color('#b45252')
+func _on_dash_timer_timeout() -> void:
+	state = States.TRACKING_PLAYER
