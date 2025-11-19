@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvpodtds0af3b"]
+
+[ext_resource type="Script" uid="uid://b07o1i5u0141y" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.gd" id="1_n27pe"]
+[ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="2_qsaso"]
+
+[sub_resource type="Resource" id="Resource_pa74d"]
+script = ExtResource("2_qsaso")
+power = -20
+metadata/_custom_type_script = "uid://yjwpqjr5cj1n"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n27pe"]
+
+[node name="HurtBox" type="Area2D"]
+script = ExtResource("1_n27pe")
+hurt_component = SubResource("Resource_pa74d")
+metadata/_custom_type_script = "uid://b07o1i5u0141y"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_n27pe")

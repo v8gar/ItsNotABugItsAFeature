@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var hit_box: HitBox = $HitBox
 
 @export var healthbar : ProgressBar
+@export var heal_hurtbox_scene: PackedScene
+
 
 var nextPoint : Vector2
 var direction : Vector2
@@ -30,7 +32,13 @@ func player_location() -> Vector2:
 	return player.global_position
 	
 func die():
+	spawn_heal_pickup()
 	self.queue_free()
+	
+func spawn_heal_pickup():
+	var healingBox = heal_hurtbox_scene.instantiate()
+	healingBox.global_position = global_position
+	get_tree().current_scene.add_child(healingBox)
 
 func update_health(health : int):
 	health = hit_box.health_component.health

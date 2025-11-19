@@ -29,6 +29,10 @@ func _on_area_entered(area: Area2D) -> void:
 		health_component.take_damage((area as HurtBox).do_attack())
 
 func die():
+	if node_to_kill != null and node_to_kill.has_method("die"):
+		node_to_kill.die()
+		return
+		
 	if node_to_kill is Player:
 		node_to_kill.die()
 	elif node_to_kill != null:
