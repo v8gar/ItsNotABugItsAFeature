@@ -14,14 +14,18 @@ enum Directions {LEFT = 0, RIGHT = 1, UP = 2, DOWN = 3}
 var player : Player
 
 func with_data(new_player : Player):
-	player = new_player
+	if new_player != null:
+		player = new_player
 	return self
 
 func enable_player_hitbox():
-	player.hitbox.enable()
+	if player != null:
+		player.hitbox.enable()
 
 func disable_player_hitbox():
-	player.hitbox.disable()
+	if player != null:
+		player.hitbox.disable()
 
 func apply_velocity_to_player():
-	player.velocity += directions.get(direction).rotated(self.global_rotation).rotated(deg_to_rad(90)) * power * 250
+	if player != null:
+		player.velocity += directions.get(direction).rotated(self.global_rotation).rotated(deg_to_rad(90)) * power * 250

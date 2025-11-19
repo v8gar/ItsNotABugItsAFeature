@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://1sajrvnamtf7"]
+[gd_scene load_steps=37 format=3 uid="uid://1sajrvnamtf7"]
 
 [ext_resource type="Script" uid="uid://baj3pbwboyb4q" path="res://player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://dglegomtu41bg" path="res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn" id="2_btcbx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bisphplyf2tev" path="res://Assets/MC_Back.png" id="8_apopc"]
 [ext_resource type="Texture2D" uid="uid://cfxq8i0jkk270" path="res://Assets/MC_Left.png" id="9_5htga"]
 [ext_resource type="Texture2D" uid="uid://ds27tocfp0hhr" path="res://Assets/MC_Right.png" id="10_p5o4e"]
+[ext_resource type="PackedScene" uid="uid://dlm8am5bc47cs" path="res://Abilities/Scenes/movement_visualization.tscn" id="11_apopc"]
 
 [sub_resource type="Resource" id="Resource_k53q1"]
 script = ExtResource("3_gwnis")
@@ -197,6 +198,10 @@ transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_
 script = ExtResource("1_l8h54")
 hitbox = NodePath("HitBox")
 item = ExtResource("2_k53q1")
+
+[node name="MoveVisRotationHelper" type="Node2D" parent="."]
+
+[node name="MovementVisualization" parent="MoveVisRotationHelper" instance=ExtResource("11_apopc")]
 
 [node name="HitBox" parent="." node_paths=PackedStringArray("collision_shape2D", "node_to_kill") instance=ExtResource("2_btcbx")]
 collision_layer = 0

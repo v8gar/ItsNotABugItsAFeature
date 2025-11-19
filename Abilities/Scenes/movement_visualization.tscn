@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlm8am5bc47cs"]
+
+[ext_resource type="Texture2D" uid="uid://b3m10ld4x5fr" path="res://Assets/arrow.png" id="1_8jrv8"]
+
+[node name="MovementVisualization" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(69, 0)
+texture = ExtResource("1_8jrv8")

@@ -2,6 +2,8 @@ class_name Inventory extends Control
 ## ok this class is pretty unreadable so i'm gonna do my best to document why stuff is happening
 ## the way it is :)
 
+signal movement_visualization_updated(direction : Vector2)
+
 ## [Item] which gets triggered when the inventory is instructed to activate
 var active_item : Item
 ## inactive [Item] held in inventory
@@ -26,6 +28,7 @@ func _ready() -> void:
 	pickup_new_item(load("res://Items/item.tscn"))
 	swap_items()
 	pickup_new_item(load("res://Items/another_item.tscn"))
+	
 
 func _process(_delta: float) -> void:
 	# update progres bars with correct values from the items
@@ -34,7 +37,6 @@ func _process(_delta: float) -> void:
 	
 	inactive_progress_bar.max_value = inactive_item.timer.wait_time
 	inactive_progress_bar.value = inactive_item.timer.wait_time - inactive_item.timer.time_left
-	
 
 ## Triggers the active [Item] to run its abilities
 func activate():
@@ -89,6 +91,8 @@ func swap_items():
 func load_data_from_active_item():
 	if active_item == null:
 		return
+	print('updating move visuals')
+	update_movement_visualization()
 	active_item_icon.texture = active_item.icon.texture
 	active_item.timer.timeout.connect(_on_active_item_cooldown_timeout)
 
@@ -108,3 +112,24 @@ func _on_active_item_cooldown_timeout():
 func _on_inactive_item_cooldown_timeout():
 	inactive_progress_bar.visible = false
 	inactive_progress_bar.value = 0
+
+func update_movement_visualization():
+	#var instanced_item : Item = scene.instantiate() as Item
+	#if instanced_item is not Item:
+		#printerr(self, " was instructed to pick up something that was not an item")
+		#return
+	#instanced_item.visible = false
+	
+	#var first_ability = instanced_item.first_ability.instantiate() as Ability
+	var first_ability = active_item.first_ability.instantiate() as Ability
+	if first_ability is MovementAbility:
+		var visualization_dir : Vector2 = first_ability.directions.get(first_ability.direction).rotated(deg_to_rad(90))
+		movement_visualization_updated.emit(visualization_dir)
+		return
+	
+	#var second_ability = instanced_item.first_ability.instantiate() as Ability
+	var second_ability = active_item.second_ability.instantiate() as Ability
+	if second_ability is MovementAbility:
+		var visualization_dir : Vector2 = second_ability.directions.get(second_ability.direction).rotated(deg_to_rad(90))
+		movement_visualization_updated.emit(visualization_dir)
+		return
