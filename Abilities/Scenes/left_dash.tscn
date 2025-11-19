@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqblw0hn6ba16"]
+
+[ext_resource type="Script" uid="uid://d1b8wx31o0rh0" path="res://Abilities/Scripts/movement_ability.gd" id="1_f3bxw"]
+
+[sub_resource type="Animation" id="Animation_pp2lk"]
+resource_name = "Start"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"apply_velocity_to_player"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ievwb"]
+_data = {
+&"Start": SubResource("Animation_pp2lk")
+}
+
+[node name="LeftDash" type="Node2D" node_paths=PackedStringArray("ability_anim")]
+script = ExtResource("1_f3bxw")
+power = 10.0
+ability_anim = NodePath("AnimationPlayer")
+cooldown = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ievwb")
+}

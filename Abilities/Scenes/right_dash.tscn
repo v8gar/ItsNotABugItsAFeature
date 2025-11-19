@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgwwwphxvilhj"]
 
-[ext_resource type="Script" uid="uid://d1b8wx31o0rh0" path="res://Abilities/Scripts/movement_ability.gd" id="1_fq6hw"]
+[ext_resource type="Script" uid="uid://d1b8wx31o0rh0" path="res://Abilities/Scripts/movement_ability.gd" id="1_ywjnu"]
 
 [sub_resource type="Animation" id="Animation_fq6hw"]
 resource_name = "Start"
@@ -28,7 +28,7 @@ _data = {
 }
 
 [node name="BasicDash" type="Node2D" node_paths=PackedStringArray("ability_anim")]
-script = ExtResource("1_fq6hw")
+script = ExtResource("1_ywjnu")
 direction = 1
 power = 10.0
 ability_anim = NodePath("AnimationPlayer")

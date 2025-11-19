@@ -63,50 +63,65 @@ animations = [{
 }]
 
 [sub_resource type="Resource" id="Resource_qi6uh"]
+resource_local_to_scene = true
 script = ExtResource("3_qxhxa")
 power = 5
 metadata/_custom_type_script = "uid://yjwpqjr5cj1n"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxhxa"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_17mbl"]
+radius = 35.0
 
-[sub_resource type="Animation" id="Animation_3dei1"]
+[sub_resource type="Animation" id="Animation_417lm"]
 resource_name = "Start"
 length = 1.7
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("AnimatedSprite2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.0333333, 1.0334333, 1.7),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"enable_hurt_box"
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBox")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"disable"
 }, {
 "args": [],
-"method": &"start_sprite_anim"
-}, {
-"args": [],
-"method": &"disable_hurt_box"
+"method": &"enable"
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p85dx"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r73mj"]
 _data = {
-&"Start": SubResource("Animation_3dei1")
+&"Start": SubResource("Animation_417lm")
 }
 
-[node name="AnotherAttack" type="Node2D" node_paths=PackedStringArray("hurt_box", "sprite", "ability_anim")]
+[node name="AOEAttack" type="Node2D" node_paths=PackedStringArray("hurt_box", "sprite", "ability_anim")]
 script = ExtResource("1_17mbl")
 hurt_box = NodePath("HurtBox")
 sprite = NodePath("AnimatedSprite2D")
 ability_anim = NodePath("AnimationPlayer")
-cooldown = 1.0
+cooldown = 1.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(16, 0)
+rotation = 3.1415927
 sprite_frames = SubResource("SpriteFrames_rq617")
 frame_progress = 0.7620791
 
@@ -117,9 +132,10 @@ hurt_component = SubResource("Resource_qi6uh")
 collision_shape2D = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("RectangleShape2D_qxhxa")
+shape = SubResource("CircleShape2D_17mbl")
+debug_color = Color(0.99999994, 0, 0.103435956, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_p85dx")
+&"": SubResource("AnimationLibrary_r73mj")
 }

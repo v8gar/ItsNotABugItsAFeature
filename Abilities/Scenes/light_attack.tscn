@@ -1,39 +1,39 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7v0gxpjpdcnu"]
+[gd_scene load_steps=17 format=3 uid="uid://df1ihfxmd4dk0"]
 
-[ext_resource type="Script" uid="uid://dflmm8vmq4y5y" path="res://Abilities/Scripts/attack_ability.gd" id="1_do1jo"]
-[ext_resource type="PackedScene" uid="uid://blqy1785xxrj" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn" id="2_fh7ky"]
-[ext_resource type="Texture2D" uid="uid://vgbwpvhbqxe0" path="res://Assets/BasicAttack.png" id="2_w0nyu"]
-[ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="3_w0nyu"]
+[ext_resource type="Texture2D" uid="uid://vgbwpvhbqxe0" path="res://Assets/BasicAttack.png" id="1_n7gy7"]
+[ext_resource type="Script" uid="uid://dflmm8vmq4y5y" path="res://Abilities/Scripts/attack_ability.gd" id="1_sebol"]
+[ext_resource type="PackedScene" uid="uid://blqy1785xxrj" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn" id="2_sebol"]
+[ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="3_tsxk6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_38qll"]
-atlas = ExtResource("2_w0nyu")
+atlas = ExtResource("1_n7gy7")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdrf8"]
-atlas = ExtResource("2_w0nyu")
+atlas = ExtResource("1_n7gy7")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_10eoj"]
-atlas = ExtResource("2_w0nyu")
+atlas = ExtResource("1_n7gy7")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4bmb"]
-atlas = ExtResource("2_w0nyu")
+atlas = ExtResource("1_n7gy7")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q74hu"]
-atlas = ExtResource("2_w0nyu")
+atlas = ExtResource("1_n7gy7")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0iqn8"]
-atlas = ExtResource("2_w0nyu")
+atlas = ExtResource("1_n7gy7")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cb6do"]
-atlas = ExtResource("2_w0nyu")
+atlas = ExtResource("1_n7gy7")
 region = Rect2(192, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_e2h6d"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_77dyp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -62,19 +62,18 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Resource" id="Resource_stlas"]
+[sub_resource type="Resource" id="Resource_m5mmn"]
 resource_local_to_scene = true
-script = ExtResource("3_w0nyu")
+script = ExtResource("3_tsxk6")
 power = 10
 metadata/_custom_type_script = "uid://yjwpqjr5cj1n"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fh7ky"]
-radius = 17.0
-height = 42.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66rsp"]
+radius = 15.0
+height = 48.0
 
-[sub_resource type="Animation" id="Animation_fh7ky"]
+[sub_resource type="Animation" id="Animation_sebol"]
 resource_name = "Start"
-length = 0.7
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -96,7 +95,7 @@ tracks/1/path = NodePath("HurtBox")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -107,39 +106,36 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w0nyu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsxk6"]
 _data = {
-&"Start": SubResource("Animation_fh7ky")
+&"Start": SubResource("Animation_sebol")
 }
 
-[node name="BasicAttack" type="Node2D" node_paths=PackedStringArray("hurt_box", "sprite", "ability_anim")]
-script = ExtResource("1_do1jo")
+[node name="LightAttack" type="Node2D" node_paths=PackedStringArray("hurt_box", "sprite", "ability_anim")]
+script = ExtResource("1_sebol")
 hurt_box = NodePath("HurtBox")
 sprite = NodePath("AnimatedSprite2D")
 ability_anim = NodePath("AnimationPlayer")
-cooldown = 1.0
+cooldown = 0.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 rotation = 2.6843164
-sprite_frames = SubResource("SpriteFrames_e2h6d")
-frame = 6
-frame_progress = 1.0
+sprite_frames = SubResource("SpriteFrames_77dyp")
 
-[node name="HurtBox" parent="." node_paths=PackedStringArray("collision_shape2D") instance=ExtResource("2_fh7ky")]
+[node name="HurtBox" parent="." node_paths=PackedStringArray("collision_shape2D") instance=ExtResource("2_sebol")]
 collision_layer = 4
 collision_mask = 0
-hurt_component = SubResource("Resource_stlas")
+hurt_component = SubResource("Resource_m5mmn")
 collision_shape2D = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(20, 0)
-shape = SubResource("CapsuleShape2D_fh7ky")
+position = Vector2(27, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_66rsp")
 debug_color = Color(0.99273616, 0, 0.254319, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_w0nyu")
+&"": SubResource("AnimationLibrary_tsxk6")
 }
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_attack_animation_finished"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://by518sy8lvvdq"]
 
 [ext_resource type="Script" uid="uid://cort7nyito44h" path="res://Items/item.gd" id="1_07jwt"]
-[ext_resource type="PackedScene" uid="uid://dgwwwphxvilhj" path="res://Abilities/Scenes/basic_dash.tscn" id="2_hj40t"]
+[ext_resource type="PackedScene" uid="uid://dgwwwphxvilhj" path="res://Abilities/Scenes/right_dash.tscn" id="2_hj40t"]
 [ext_resource type="PackedScene" uid="uid://b7v0gxpjpdcnu" path="res://Abilities/Scenes/basic_attack.tscn" id="3_2ihp4"]
 [ext_resource type="Texture2D" uid="uid://deiro2an22sx7" path="res://Assets/swap.png" id="4_07jwt"]
 

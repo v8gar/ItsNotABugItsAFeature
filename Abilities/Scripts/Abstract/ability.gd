@@ -1,6 +1,6 @@
 @abstract class_name Ability extends Node2D
 
-@warning_ignore("unused_signal") signal finished
+signal finished
 
 @export var ability_anim : AnimationPlayer
 @export var cooldown : float

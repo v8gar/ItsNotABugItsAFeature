@@ -39,12 +39,6 @@ func _process(delta: float) -> void:
 	update_anim_parameters()
 
 func update_anim_parameters():
-	if velocity:
-		animation_tree.set("parameters/conditions/idle", false)
-		animation_tree.set("parameters/conditions/walk", true)
-	else:
-		animation_tree.set("parameters/conditions/idle", true)
-		animation_tree.set("parameters/conditions/walk", false)
 	animation_tree.set("parameters/Idle/blend_position", velocity.normalized())
 	animation_tree.set("parameters/Walk/blend_position", velocity.normalized())
 
