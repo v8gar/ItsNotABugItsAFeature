@@ -1,11 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://dtl61m7bvusg"]
 
-[ext_resource type="Script" uid="uid://bs7yaq7gomar5" path="res://Enemy/Dash_enemy.gd" id="1_tvo0k"]
-[ext_resource type="PackedScene" uid="uid://dvpodtds0af3b" path="res://Enemy/healing_hurt_box.tscn" id="2_6djl0"]
+[ext_resource type="Script" uid="uid://bs7yaq7gomar5" path="res://Enemy/Scripts/Dash_enemy.gd" id="1_tvo0k"]
+[ext_resource type="PackedScene" uid="uid://dvpodtds0af3b" path="res://Enemy/Scenes/healing_hurt_box.tscn" id="2_6djl0"]
 [ext_resource type="PackedScene" uid="uid://blqy1785xxrj" path="res://Components/Hitbox&Hurtbox Stuff/hurt_box.tscn" id="2_jpr3n"]
 [ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="3_6djl0"]
 [ext_resource type="PackedScene" uid="uid://dglegomtu41bg" path="res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn" id="4_18mdo"]
 [ext_resource type="Script" uid="uid://86uwh70cdq33" path="res://Components/health_component.gd" id="5_brb1q"]
+[ext_resource type="PackedScene" uid="uid://dlm8am5bc47cs" path="res://Abilities/Scenes/movement_visualization.tscn" id="7_qou4v"]
 [ext_resource type="Script" uid="uid://c8xnefd6fkw30" path="res://Visual Effects/particle_emitter.gd" id="6_jpr3n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvo0k"]
@@ -81,5 +82,9 @@ scale = Vector2(0.1, 0.1)
 show_percentage = false
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[node name="DashVisRotationHelper" type="Node2D" parent="."]
+
+[node name="DashVisualization" parent="DashVisRotationHelper" instance=ExtResource("7_qou4v")]
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

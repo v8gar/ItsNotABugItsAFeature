@@ -1,6 +1,6 @@
 extends Node2D
 
-var enemy = preload("res://Enemy/dash_enemy.tscn")
+var enemy = preload("res://Enemy/Scenes/dash_enemy.tscn")
 @onready var fade_player: AnimationPlayer = $FadePlayer
 @onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 

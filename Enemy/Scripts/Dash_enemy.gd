@@ -1,6 +1,7 @@
 extends Enemy
 
 @onready var dash_timer : Timer = %DashTimer as Timer
+@onready var dash_visualization: Node2D = $DashVisRotationHelper/DashVisualization
 
 @export var moveSpeed : float = 100
 @export var dashSpeed : float = 200
@@ -11,6 +12,9 @@ var health : int
 
 var state : States = States.TRACKING_PLAYER
 enum States {DASHING, TRACKING_PLAYER}
+
+func _ready() -> void:
+	dash_visualization.hide()
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -26,11 +30,14 @@ func _physics_process(delta: float) -> void:
 func dash() -> void:
 	dashTargetPosition = player_location()
 	
+	dashDirection = global_position.direction_to(dashTargetPosition)
+	dash_visualization.rotation = dashDirection.angle()
+	dash_visualization.show()
+	
 	await get_tree().create_timer(.5).timeout
 	
 	dash_timer.start()
 	
-	dashDirection = global_position.direction_to(dashTargetPosition)
 	velocity = dashDirection * dashSpeed * 2	
 
 func checkDash() -> void:
@@ -40,3 +47,4 @@ func checkDash() -> void:
 
 func _on_dash_timer_timeout() -> void:
 	state = States.TRACKING_PLAYER
+	dash_visualization.hide()
