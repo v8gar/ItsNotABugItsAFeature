@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtl61m7bvusg"]
+[gd_scene load_steps=15 format=3 uid="uid://dtl61m7bvusg"]
 
 [ext_resource type="Script" uid="uid://bs7yaq7gomar5" path="res://Enemy/Scripts/Dash_enemy.gd" id="1_tvo0k"]
 [ext_resource type="PackedScene" uid="uid://dvpodtds0af3b" path="res://Enemy/Scenes/healing_hurt_box.tscn" id="2_6djl0"]
@@ -6,12 +6,12 @@
 [ext_resource type="Script" uid="uid://yjwpqjr5cj1n" path="res://Components/hurt_component.gd" id="3_6djl0"]
 [ext_resource type="PackedScene" uid="uid://dglegomtu41bg" path="res://Components/Hitbox&Hurtbox Stuff/hit_box.tscn" id="4_18mdo"]
 [ext_resource type="Script" uid="uid://86uwh70cdq33" path="res://Components/health_component.gd" id="5_brb1q"]
-[ext_resource type="PackedScene" uid="uid://dlm8am5bc47cs" path="res://Abilities/Scenes/movement_visualization.tscn" id="7_qou4v"]
 [ext_resource type="Script" uid="uid://c8xnefd6fkw30" path="res://Visual Effects/particle_emitter.gd" id="6_jpr3n"]
+[ext_resource type="PackedScene" uid="uid://dlm8am5bc47cs" path="res://Abilities/Scenes/movement_visualization.tscn" id="7_qou4v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tvo0k"]
 
-[sub_resource type="Resource" id="Resource_6djl0"]
+[sub_resource type="Resource" id="Resource_riftw"]
 resource_local_to_scene = true
 script = ExtResource("3_6djl0")
 power = 10
@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://yjwpqjr5cj1n"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6djl0"]
 
-[sub_resource type="Resource" id="Resource_18mdo"]
+[sub_resource type="Resource" id="Resource_igfr2"]
 resource_local_to_scene = true
 script = ExtResource("5_brb1q")
 health = 20
@@ -45,7 +45,7 @@ shape = SubResource("CapsuleShape2D_tvo0k")
 [node name="HurtBox" parent="." node_paths=PackedStringArray("collision_shape2D") instance=ExtResource("2_jpr3n")]
 collision_layer = 2
 collision_mask = 0
-hurt_component = SubResource("Resource_6djl0")
+hurt_component = SubResource("Resource_riftw")
 collision_shape2D = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -59,7 +59,7 @@ radius = 100.0
 [node name="HitBox" parent="." node_paths=PackedStringArray("collision_shape2D", "node_to_kill") instance=ExtResource("4_18mdo")]
 collision_layer = 0
 collision_mask = 4
-health_component = SubResource("Resource_18mdo")
+health_component = SubResource("Resource_igfr2")
 collision_shape2D = NodePath("CollisionShape2D")
 hit_effect = SubResource("Resource_brb1q")
 node_to_kill = NodePath("..")
