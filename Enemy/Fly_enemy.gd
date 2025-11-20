@@ -1,6 +1,6 @@
 extends Enemy
 
-var health : int
+var health: int
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()

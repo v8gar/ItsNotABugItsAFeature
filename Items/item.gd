@@ -13,7 +13,10 @@ var player : Player
 var is_running : bool = false
 
 func _ready() -> void:
-	player = get_tree().get_nodes_in_group("Player")[0] as Player
+	#player = get_tree().get_nodes_in_group("Player")[0] as Player
+	for possible_player in get_tree().get_nodes_in_group("Player"):
+		if possible_player != null:
+			player = possible_player as Player
 
 func activate():
 	if !timer.is_stopped() || is_running:
