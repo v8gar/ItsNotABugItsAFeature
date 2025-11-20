@@ -35,8 +35,6 @@ func spawn_heal_pickup():
 	healingBox.global_position = global_position
 	var cur_scene = get_tree().current_scene
 	cur_scene.call_deferred("add_child", healingBox)
-	#get_tree().current_scene.add_child(healingBox)
-	print(healingBox.hurt_component.power)
 
 func update_health(health : int):
 	health = hit_box.health_component.health
