@@ -5,6 +5,10 @@ extends Node2D
 
 @onready var round_counter: RichTextLabel = %RoundCounter
 @onready var round_progress_bar: ProgressBar = %RoundProgressBar
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var splash_screen_text: RichTextLabel = %SplashScreenText
+@onready var splash_screen: Control = %SplashScreen
 
 var wave: int = 0
 
@@ -20,23 +24,30 @@ var num_to_spawn: int = 10
 var enemy = preload("res://Enemy/Scenes/dash_enemy.tscn")
 
 func _ready() -> void:
+	splash_screen.modulate.a = 0
 	round_progress_bar.value = 0
 	round_counter.text = "[center]Round: " + str(wave) + "[/center]"
+	set_level_stats()
+	play_splash_screen()
 
 func finish_round():
 	print("End of round ", wave)
 	spawn_timer.stop()
 	
 
-func next_round():
-	# TODO: Dispaly Text on Screen about wave finished
-	await get_tree().create_timer(3.0).timeout
-	# TODO: Display Text on Screen about new wave beginning
-	await get_tree().create_timer(3.0).timeout
-	wave += 1
-	spawn_counter = 0
-	round_progress_bar.value = 0
+func update_round_counter():
 	round_counter.text = "[center]Round: " + str(wave) + "[/center]"
+	round_progress_bar.value = 0
+
+func play_splash_screen():
+	splash_screen_text.text = "[center][shake]Round: " + str(wave)
+	animation_player.play("RoundSplashScreen")
+	await animation_player.animation_finished
+
+func next_round():
+	wave += 1
+	await play_splash_screen()
+	spawn_counter = 0
 	set_level_stats()
 	spawn_timer.start()
 	is_done_spawning = false
@@ -47,7 +58,7 @@ func set_level_stats() -> void:
 		# Stats Blocks every 5 levels
 	if 0 <= wave and wave <= 4:
 		health = 10
-		num_to_spawn = 10
+		num_to_spawn = 3
 	elif 6 <= wave and wave  <= 9:
 		health = 30
 		num_to_spawn = 15
