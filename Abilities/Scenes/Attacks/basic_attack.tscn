@@ -65,7 +65,7 @@ animations = [{
 [sub_resource type="Resource" id="Resource_d08ha"]
 resource_local_to_scene = true
 script = ExtResource("3_w0nyu")
-power = 10
+power = 50
 metadata/_custom_type_script = "uid://yjwpqjr5cj1n"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fh7ky"]
@@ -116,7 +116,6 @@ _data = {
 script = ExtResource("1_do1jo")
 hurt_box = NodePath("HurtBox")
 sprite = NodePath("AnimatedSprite2D")
-knockback = 1000.0
 ability_anim = NodePath("AnimationPlayer")
 cooldown = 1.0
 
